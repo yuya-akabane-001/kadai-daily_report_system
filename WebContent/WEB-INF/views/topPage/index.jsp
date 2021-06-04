@@ -18,7 +18,7 @@
                     <th class="report_title">タイトル</th>
                     <th class="report_action">操作</th>
                 </tr>
-                <c:forEach var="report" items="${report}" varStatus="status">
+                <c:forEach var="report" items="${reports}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="report_name"><c:out value="${report.employee.name}" /></td>
                         <td class="report_date"><fmt:formatDate value='${report.report_date}' pattern='yyyy-MM-dd' /></td>
@@ -30,8 +30,8 @@
         </table>
 
         <div id="pagination">
-             (全 ${report_count} 件) <br />
-            <c:forEach var="i" begin="i" end="${((report_count - 1) / 15) + 1}" step="1">
+            （全 ${reports_count} 件）<br />
+            <c:forEach var="i" begin="1" end="${((reports_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;
